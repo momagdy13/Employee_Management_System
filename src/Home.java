@@ -6,8 +6,8 @@ public class Home {
     private JPanel home;
     private JButton addButton;
     private JButton updateButton;
-    private JButton deleteButton;
-    private JButton searchButton;
+    private JButton searchViewButton;
+    private JButton logOutButton;
 
     public Home() {
         JFrame frame = new JFrame("Home");
@@ -23,7 +23,28 @@ public class Home {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new Add_employee();
+                new Add_Delete_employee();
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new Update_Data();
+            }
+        });
+        searchViewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new Search();
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new LogIn();
             }
         });
     }

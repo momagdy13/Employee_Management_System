@@ -18,6 +18,7 @@ public class Update_Data {
     private JTextField phone;
     private JTextField salary;
     private JTextField email;
+    private JButton delete;
     Connection connection = database_connection.connection();
     Statement statement = null;
 
@@ -55,6 +56,8 @@ public class Update_Data {
                         addresss.setText(rs.getString(6));
                         phone.setText(rs.getString(7));
                         email.setText(rs.getString(8));
+                    }else {
+                        JOptionPane.showMessageDialog(null,"Record Not Found","ERROR",JOptionPane.ERROR_MESSAGE);
                     }
                 }catch(Exception exception){
                     JOptionPane.showMessageDialog(null,exception);
@@ -77,6 +80,21 @@ public class Update_Data {
                     statement.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null,"Data Update Successfully..!");
                     clear();
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null,exception);
+                }
+            }
+        });
+        delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    statement = connection.createStatement();
+                    String sql = "DELETE FROM employees WHERE ID = '"+id.getText()+"'";
+                    statement.executeUpdate(sql);
+                    JOptionPane.showMessageDialog(null, "Delete Data Successfully...!");
+                    clear();
+
                 }catch (Exception exception){
                     JOptionPane.showMessageDialog(null,exception);
                 }
