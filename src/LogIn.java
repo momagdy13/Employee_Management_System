@@ -42,7 +42,7 @@ public class LogIn {
                         ResultSet rs = ps.executeQuery();
                         if (rs.next()) {
                             frame.dispose();
-                            JOptionPane.showMessageDialog(null,"LogIN success");
+                            new Home();
 
                         } else {
                             JOptionPane.showMessageDialog(null, "Email or Password invalid", "MESSAGE", JOptionPane.ERROR_MESSAGE);
